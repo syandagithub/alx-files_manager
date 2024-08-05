@@ -37,12 +37,20 @@ class RedisClient {
     return promisify(this.client.GET).bind(this.client)(key);
   }
 
+  /**
+   * Validates if this client's connection to the Redis server is active.
+   * @returns {boolean}
+   */
  
   async set(key, value, duration) {
     await promisify(this.client.SETEX)
       .bind(this.client)(key, duration, value);
   }
 
+  /**
+   * Validates if this client's connection to the Redis server is active.
+   * @returns {boolean}
+   */
   
   async del(key) {
     await promisify(this.client.DEL).bind(this.client)(key);
